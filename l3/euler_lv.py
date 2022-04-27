@@ -2,10 +2,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import math
-
-
-def nsteps(stop, step):
-    return math.ceil(stop / step + 1)
+from nsteps import nsteps
 
 
 def calc_euler(
@@ -29,7 +26,7 @@ def calc_euler(
         xy[0, i + 1] = x + dx
         xy[1, i + 1] = y + dy
 
-    return t, xy
+    return xy, t
 
 
 # t, xy = calc_euler(20, 0.01, 2, 1, (1, 1, 1, 1))
@@ -44,13 +41,13 @@ def calc_euler(
 fig, axs = plt.subplots(3)
 
 abcd = (1.2, 0.6, 0.3, 0.8)
-t, xy = calc_euler(25, 0.3, 2, 1, abcd)
+xy, t = calc_euler(25, 0.3, 2, 1, abcd)
 axs[0].plot(t, xy[1, :])
 axs[0].plot(t, xy[0, :])
-t, xy = calc_euler(25, 0.1, 2, 1, abcd)
+xy, t = calc_euler(25, 0.1, 2, 1, abcd)
 axs[1].plot(t, xy[1, :])
 axs[1].plot(t, xy[0, :])
-t, xy = calc_euler(25, 0.001, 2, 1, abcd)
+xy, t = calc_euler(25, 0.001, 2, 1, abcd)
 axs[2].plot(t, xy[1, :])
 axs[2].plot(t, xy[0, :])
 plt.show()
