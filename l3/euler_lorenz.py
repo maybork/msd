@@ -28,15 +28,4 @@ def calc_euler(
         xyz[i + 1, 0] = x + dx
         xyz[i + 1, 1] = y + dy
         xyz[i + 1, 2] = z + dz
-    # print(xy.shape, t.shape)
     return xyz, t
-
-
-# x0 = y0 = z0 = 1
-# sigma = 10
-# beta = 8 / 3
-# rho = 28
-# sol, t = calc_euler(25, 0.001, x0, y0, z0, (sigma, beta, rho))
-# plt.plot(sol[:, 0], sol[:, 2])
-
-# plt.show(block=True)
