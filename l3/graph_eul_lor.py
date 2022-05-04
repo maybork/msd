@@ -8,11 +8,11 @@ X0 = Y0 = Z0 = 1
 SIGMA = 10
 BETA = 8 / 3
 RHO = 28
-TESTED_STEPS = (0.02, 0.01, 0.00001)
+TESTED_STEPS = (0.02, 0.01, 0.005, 0.001, 0.0001)
 INTERVAL = 25
 
 
-fig, axs = plt.subplots(nrows=len(TESTED_STEPS), ncols=3)
+fig, axs = plt.subplots(nrows=len(TESTED_STEPS), ncols=3, sharex=True)
 print(f"{'step':>6} | {'x':>10} | {'y':>10} | {'z':>10} | {'(x+y+z)/3':>10}")
 for i, stepsize in enumerate(TESTED_STEPS):
     eul, t = calc_euler(INTERVAL, stepsize, X0, Y0, Z0, (SIGMA, BETA, RHO))
@@ -29,4 +29,11 @@ for i, stepsize in enumerate(TESTED_STEPS):
     axs[i, 1].plot(eul[:, 1], eul[:, 2])  # y(z)
     axs[i, 2].plot(eul[:, 0], eul[:, 2])  # x(z)
 
+axs[0, 0].set_title("x(y)")
+axs[0, 1].set_title("y(z)")
+axs[0, 2].set_title("x(z)")
+plt.suptitle(
+    "Wyniki uzyskane przez metodę Eulera z dt = "
+    + ",".join([str(step) for step in TESTED_STEPS])
+)
 plt.show()
