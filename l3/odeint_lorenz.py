@@ -1,4 +1,3 @@
-from matplotlib import pyplot as plt
 import numpy as np
 from scipy.integrate import odeint
 from nsteps import nsteps
